@@ -14,24 +14,41 @@ call plug#begin()
 
 Plug 'https://github.com/vim-airline/vim-airline'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'flazz/vim-colorschemes'
-Plug 'morhetz/gruvbox'
 Plug 'scrooloose/nerdtree'
+Plug 'flazz/vim-colorschemes'
 Plug 'tomtom/tcomment_vim'
 Plug 'https://github.com/mg979/vim-visual-multi'
 Plug 'majutsushi/tagbar'
 Plug 'scrooloose/syntastic'
 Plug 'sheerun/vim-polyglot'
 Plug 'instant-markdown/vim-instant-markdown', {'for': 'markdown', 'do': 'yarn install'}
+Plug 'lervag/vimtex'
 Plug 'tpope/vim-fugitive'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'airblade/vim-gitgutter'
+Plug 'xuyuanp/nerdtree-git-plugin'
 
 call plug#end()
 
 set background=dark
-colorscheme gruvbox
+colorscheme monokai-phoenix
+
+" podswietlenie pasujacego fragmentu
+hi CocSearch ctermfg=119  guifg=#87ff5f
+" strzalka do errorow
+hi CocErrorSign ctermfg=197 guifg=#ff005f
+" kolor tekstu z okienka erroru
+hi CocErrorFloat ctermfg=197 guifg=#ff005f
+
+" sel i item menu 
+hi PmenuSel ctermfg=253 ctermbg=237 guifg=#dadada guibg=#3a3a3a
+hi Pmenu ctermfg=253 ctermbg=234 guifg=#dadada guibg=#1c1c1c
+hi link SyntasticErrorSign CocErrorSign
+
+nnoremap <silent><leader>t :SyntasticToggleMode \| :below split \| terminal <CR> :resize -7 <CR>A
+tnoremap <leader>t <C-\><C-n> \| :q<CR> \| :SyntasticToggleMode \| :SyntasticCheck <CR>
+
 
 nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
@@ -42,6 +59,7 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+
 
 inoremap <silent><expr><Tab> coc#pum#visible() ? coc#pum#confirm() : "\<Tab>"
 
@@ -57,6 +75,7 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+let g:syntastic_python_flake8_post_args="--max-line-length=150"
 
 inoremap " ""<left>
 inoremap ' ''<left>
@@ -81,3 +100,7 @@ nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
+nmap <space>li <plug>(vimtex-info)
+nmap <space>lv <plug>(vimtex-view)
+nmap <space>ll <plug>(vimtex-compile)
