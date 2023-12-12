@@ -28,23 +28,20 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'airblade/vim-gitgutter'
 Plug 'xuyuanp/nerdtree-git-plugin'
+Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
+Plug 'rebelot/kanagawa.nvim'
+Plug 'ryanoasis/vim-devicons'
+Plug 'townk/vim-autoclose'
 
 call plug#end()
 
 set background=dark
-colorscheme monokai-phoenix
+colorscheme kanagawa
 
-" podswietlenie pasujacego fragmentu
-hi CocSearch ctermfg=119  guifg=#87ff5f
-" strzalka do errorow
-hi CocErrorSign ctermfg=197 guifg=#ff005f
-" kolor tekstu z okienka erroru
-hi CocErrorFloat ctermfg=197 guifg=#ff005f
-
-" sel i item menu 
-hi PmenuSel ctermfg=253 ctermbg=237 guifg=#dadada guibg=#3a3a3a
-hi Pmenu ctermfg=253 ctermbg=234 guifg=#dadada guibg=#1c1c1c
-hi link SyntasticErrorSign CocErrorSign
+let g:webdevicons_enable_nerdtree = 1
+let g:webdevicons_enable_airline_tabline = 1
+let g:webdevicons_enable_airline_statusline = 1
+set scrolloff=5
 
 nnoremap <silent><leader>t :SyntasticToggleMode \| :below split \| terminal <CR> :resize -7 <CR>A
 tnoremap <leader>t <C-\><C-n> \| :q<CR> \| :SyntasticToggleMode \| :SyntasticCheck <CR>
@@ -65,8 +62,6 @@ inoremap <silent><expr><Tab> coc#pum#visible() ? coc#pum#confirm() : "\<Tab>"
 
 tnoremap <Esc> <C-\><C-n>
 
-" nnoremap <CR> o<Esc>0"_D
-
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -77,9 +72,6 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_python_flake8_post_args="--max-line-length=150"
 
-inoremap " ""<left>
-inoremap ' ''<left>
-inoremap [ []<left>
 
 " MARKDOWN "
 
