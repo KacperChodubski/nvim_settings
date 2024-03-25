@@ -32,6 +32,7 @@ Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 Plug 'rebelot/kanagawa.nvim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'townk/vim-autoclose'
+Plug 'puremourning/vimspector'
 
 call plug#end()
 
@@ -61,6 +62,8 @@ nnoremap <C-H> <C-W><C-H>
 inoremap <silent><expr><Tab> coc#pum#visible() ? coc#pum#confirm() : "\<Tab>"
 
 tnoremap <Esc> <C-\><C-n>
+
+let g:vimspector_enable_mappings = 'HUMAN'
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
